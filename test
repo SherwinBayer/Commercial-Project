@@ -2,3 +2,4 @@ test
 char test(test t){
   return t + 1;
 }
+hello
