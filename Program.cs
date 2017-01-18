@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -240,6 +240,26 @@ namespace ITextSharpDraft
             return relevantTextData;
         }
 
+        public static string getAccountNumber(string[] scannedInformation)
+        {
+            int accountNumberLength = 10;
+            int dashPosition = 7;
+            string accountNo = null;
+
+            for (int i = 0; i < scannedInformation.Length; i++)
+            {
+                if (scannedInformation[i].Length == accountNumberLength && scannedInformation[i].IndexOf("-") == dashPosition)
+                {
+                    accountNo = scannedInformation[i];
+                    break;
+                }
+            }
+            if (accountNo == null)
+                return "Error, no Account Number";
+            else
+                return accountNo;
+        }
+
         /*
         public static double getTotalCostDue(string[] linesOfText)
         {
@@ -317,6 +337,7 @@ namespace ITextSharpDraft
                     {
                         double wasteWaterCost=0;
                         double totalCost=0;
+                        string accountNumber = "";
                         string propertyLocation="";
                         string accountType="";
                         string dueDate="";
@@ -351,6 +372,8 @@ namespace ITextSharpDraft
                                 propertyLocation = getRelevantTextData(linesOfText, "Property location");
                                 accountType = getRelevantTextData(linesOfText, "Account type");
                                 dueDate = getDueDate(linesOfText, propertyLocation);
+                                accountNumber = getAccountNumber(linesOfText);
+                                Console.WriteLine("Account Number is: " + accountNumber);
                                 Console.WriteLine("Waste water cost equals: " + wasteWaterCost.ToString("0.00"));
                                 Console.WriteLine("Total cost equals: " + totalCost.ToString("0.00"));
                                 Console.WriteLine("Property Location is: " + propertyLocation);
@@ -377,6 +400,7 @@ namespace ITextSharpDraft
                         StreamWriter sw = new StreamWriter(createFile);
                         sw.WriteLine("Report of Extracted data from " + fileNameNoExtension +
                                         " for the use of First Property Management");
+                        sw.WriteLine("Account number is: " + accountNumber);
                         sw.WriteLine("Waste water cost equals: " + wasteWaterCost.ToString("0.00"));
                         sw.WriteLine("Total cost equals: " + totalCost.ToString("0.00"));
                         sw.WriteLine("Property Location is: " + propertyLocation);
@@ -385,6 +409,7 @@ namespace ITextSharpDraft
                         sw.WriteLine("This reading date equals: " + thisReadingDate);
                         sw.WriteLine("The last reading date equals: " + lastReadingDate);
                         sw.Close();
+
                     }
                 }
                 /*
