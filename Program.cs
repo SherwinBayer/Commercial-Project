@@ -10,6 +10,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
 using SystemIOPath = System.IO.Path;
+using System.Globalization;
 
 namespace ITextSharpDraft
 {
@@ -189,23 +190,108 @@ namespace ITextSharpDraft
             return relevantTextData;
         }
 
+        // This getDueDate function works under the assumption that the latest date found
+        // on the first page in the watercare invoice .pdf, will always be considered as 
+        // the due date
+
+        public static string getDueDate(string[] linesOfText)
+        {
+            int length = linesOfText.Length;
+            string dateOne = "";
+            string dateTwo = "";
+            DateTime dateOneDT = DateTime.Today; // No purpose behind this but to simply assign a value to DateTime object
+            DateTime dateTwoDT = DateTime.Today;
+
+            for(int i = 0; i < linesOfText.Length; i++)
+            {
+                // This if statement checks whether the current line data does not equal nothing AND if the 
+                // line data matches the following pattern: 2 decimal digits, a white space character,
+                // 3 alphabetical characters (lower or upper case), a white space character and 4 decimal
+                // digits. We use this pattern because the format for the date on this line is supposed
+                // to be DD MMM YYYY , where DD and YYYY are numbers and MMM is text AND the length of the
+                // current line is equal to 11 characters
+                if ((!linesOfText[i].Equals("")) && (Regex.IsMatch(linesOfText[i], @"^\d{2}\s[a-zA-Z]{3}\s\d{4}$")) && (linesOfText[i].Length == 11))
+                {
+                    if(dateOne.Equals(""))
+                    {
+                        dateOne = linesOfText[i];
+                        // Converting the date found into a DateTime object with an english NZ date/time format
+                        dateOneDT = DateTime.Parse(dateOne, new CultureInfo("en-NZ", true), DateTimeStyles.AllowWhiteSpaces & DateTimeStyles.AssumeLocal);
+                    }
+                    else
+                    {
+                        dateTwo = linesOfText[i];
+                        dateTwoDT = DateTime.Parse(dateTwo, new CultureInfo("en-NZ", true), DateTimeStyles.AllowWhiteSpaces & DateTimeStyles.AssumeLocal);
+                    }
+                }
+                
+                // If both string fields contain a date, then perform a comparison of dates
+                if((!dateOne.Equals("")) && (!dateTwo.Equals("")))
+                {
+                    // If dateOneDT's date is later than dateTwoDT's date i.e. greater than zero
+                    if(dateOneDT.CompareTo(dateTwoDT) > 0)
+                    {
+                        // Don't do anything because dateOneDT is later than
+                        // dateTwoDT
+                    }
+                    else
+                    {
+                        dateOneDT = dateTwoDT;
+                        dateOne = dateTwo;
+                    }
+                }  
+            }
+            return dateOne;
+        }
+        /*
         public static string getDueDate(string[] linesOfText, string propertyLocation)
         {
             int length = linesOfText.Length;
             string dueDate = "";
+            string invoiceDate = "";
+            DateTime dueDateDT;
+            DateTime invoiceDateDT;
 
             for(int i = 0; i < length; i++)
             {
                 if(linesOfText[i].Equals(propertyLocation))
                 {
-                    dueDate = linesOfText[i + 2]; // The due date is usually found 2 indeces after
+                    dueDate = linesOfText[i + 2]; // The due date is usually found 2 indices after
                     // the line where the actual property location address is located
-                    if(!dueDate.Equals(""))
-                        break;
+
+                    invoiceDate = linesOfText[i + 1]; // The invoice date is usually found 1 index after
+                    // the line where the actual property location address is located
+
+                    // This if statement checks whether the dueDate data does not equal nothing AND if the 
+                    // dueDate data matches the following pattern: 2 decimal digits, a white space character,
+                    // 3 alphabetical characters (lower or upper case), a white space character and 4 decimal
+                    // digits. We use this pattern because the format for the date on this line is supposed
+                    // to be DD MMM YYYY , where DD and YYYY are numbers and MMM is text
+                    if((!dueDate.Equals("")) && (Regex.IsMatch(dueDate, @"^\d{2}\s?[a-zA-Z]{3}\s\d{4}$")))
+                    {
+                        // Converting the date found into a DateTime object with a English NZ date/time format
+                        dueDateDT = DateTime.Parse(dueDate, new CultureInfo("en-NZ", true), DateTimeStyles.AllowWhiteSpaces & DateTimeStyles.AssumeLocal);
+
+                        if ((!invoiceDate.Equals("")) && (Regex.IsMatch(invoiceDate, @"^\d{2}\s?[a-zA-Z]{3}\s\d{4}$")))
+                        {
+                            invoiceDateDT = DateTime.Parse(invoiceDate, new CultureInfo("en-NZ", true), DateTimeStyles.AllowWhiteSpaces & DateTimeStyles.AssumeLocal);
+
+                            if (dueDateDT.CompareTo(invoiceDateDT) > 0)
+                            {
+                                // We can be sure we have found the correct due date because
+                                // this date is later than the invoice date
+                            }
+                            else
+                            {
+                                dueDate = invoiceDate; // Maybe swap the two together in this case
+                                // because we are comparing two dates hence, one has to be the other?
+                            }
+                        }
+                    }
                 }
             }
             return dueDate;
-        }
+        }*/
 
         public static string getReadingDates(string[] linesOfText, string textToSearch)
         {
@@ -232,7 +318,10 @@ namespace ITextSharpDraft
                 // \s is a white space character, the last index the substring falls on is excluded
                 // hence length is 10, not 9
 
-                if(!relevantTextData.Equals(""))
+                // This if statement checks to see whether the substring gathered is not empty AND whether
+                // it conforms to the following pattern: 2 decimal digits, a hyphen(-), 3 alphabetical 
+                // characters (upper or lower case), a hyphen and 2 decimal digits
+                if((!relevantTextData.Equals("")) && (Regex.IsMatch(relevantTextData, @"^\d{2}\-[a-zA-Z]{3}\-\d{2}$")))
                 {
                     break;
                 }
@@ -312,7 +401,7 @@ namespace ITextSharpDraft
                 string filepathfive = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices\Watercare_Bill_5160098-02_2017_Jan_06.pdf"; // 53
                 string filepathsix = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices\Watercare_Bill_5163712-02_2017_Jan_09.pdf"; // not 53
                 string filepathseven = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices\Watercare_Bill_5126604-02_2017_Jan_04.pdf";
-
+                
                 string folderpath = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices";
                 // Be sure to update folderpath to match your directory!
                 string currentFilePath = "";
@@ -371,7 +460,7 @@ namespace ITextSharpDraft
                                 totalCost = getRelevantCharges(linesOfText, "Balance of current charges");
                                 propertyLocation = getRelevantTextData(linesOfText, "Property location");
                                 accountType = getRelevantTextData(linesOfText, "Account type");
-                                dueDate = getDueDate(linesOfText, propertyLocation);
+                                dueDate = getDueDate(linesOfText);
                                 accountNumber = getAccountNumber(linesOfText);
                                 Console.WriteLine("Account Number is: " + accountNumber);
                                 Console.WriteLine("Waste water cost equals: " + wasteWaterCost.ToString("0.00"));
@@ -413,7 +502,7 @@ namespace ITextSharpDraft
                     }
                 }
                 /*
-                ArrayList pdftexts = ReadPdfFileArrayList(filepathseven);
+                ArrayList pdftexts = ReadPdfFileArrayList(filepaththree);
                 object[] textsArray = pdftexts.ToArray(); // There should only be 2 pages
                 
                 // By converting the arraylist to an array, each index within the array
@@ -437,16 +526,20 @@ namespace ITextSharpDraft
 
                     if(i == 0) // First page
                     {
+                        string accountNumber = getAccountNumber(linesOfText);
                         double wasteWaterCost = getRelevantCharges(linesOfText, "Wastewater fixed charges");
                         double totalCost = getRelevantCharges(linesOfText, "Balance of current charges");
                         string propertyLocation = getRelevantTextData(linesOfText, "Property location");
                         string accountType = getRelevantTextData(linesOfText, "Account type");
-                        string dueDate = getDueDate(linesOfText, propertyLocation);
+                        string dueDate = getDueDate(linesOfText);
+                        Console.WriteLine("Account Number is: " + accountNumber);
                         Console.WriteLine("Waste water cost equals: " + wasteWaterCost.ToString("0.00"));
                         Console.WriteLine("Total cost equals: " + totalCost.ToString("0.00"));
                         Console.WriteLine("Property Location is: " + propertyLocation);
                         Console.WriteLine("Account Type is: " + accountType);
                         Console.WriteLine("Due date is: " + dueDate);
+                        //DateTime date = DateTime.Parse(dueDate, new CultureInfo("en-NZ", true), DateTimeStyles.AllowWhiteSpaces & DateTimeStyles.AssumeLocal);
+                        //Console.WriteLine("Due date formatted: " + date);
                     }
                     else if(i == 1) // Second page
                     {
