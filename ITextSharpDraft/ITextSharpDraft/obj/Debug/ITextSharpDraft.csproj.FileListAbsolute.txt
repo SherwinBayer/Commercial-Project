@@ -11,3 +11,6 @@ C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITex
 C:\Users\Sherwin\Source\Repos\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe.config
 C:\Users\Sherwin\Source\Repos\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.exe
 C:\Users\Sherwin\Source\Repos\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.pdb
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe.config
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.exe
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.pdb
