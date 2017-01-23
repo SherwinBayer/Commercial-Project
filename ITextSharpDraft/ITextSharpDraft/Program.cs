@@ -339,13 +339,17 @@ namespace ITextSharpDraft
             int accountNumberLength = 10;
             int dashPosition = 7;
             string accountNo = null;
+            string pattern = @"^\d{7}(-\d{2})";
 
             for (int i = 0; i < scannedInformation.Length; i++)
             {
                 if (scannedInformation[i].Length == accountNumberLength && scannedInformation[i].IndexOf("-") == dashPosition)
                 {
-                    accountNo = scannedInformation[i];
-                    break;
+                    if (Regex.IsMatch(scannedInformation[i], pattern))
+                    {
+                        accountNo = scannedInformation[i];
+                        break;
+                    }
                 }
             }
             if (accountNo == null)
@@ -397,17 +401,9 @@ namespace ITextSharpDraft
 
             try
             {
-                string filepathzero = "PdfTestTwo.pdf"; // You don't have to specify file path if the file
-                // itself is saved in the bin\debug folder for the project
-                string filepath = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\PdfTestTwo.pdf";
-                string filepathtwo = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Sherwin Bayer CV.pdf";
-                string filepaththree = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices\Watercare_Bill_Sample.pdf"; // "Account type" index 53
-                string filepathfour = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices\Watercare_Bill_2047547-02_2017_Jan_05.pdf"; // 53
-                string filepathfive = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices\Watercare_Bill_5160098-02_2017_Jan_06.pdf"; // 53
-                string filepathsix = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices\Watercare_Bill_5163712-02_2017_Jan_09.pdf"; // not 53
-                string filepathseven = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices\Watercare_Bill_5126604-02_2017_Jan_04.pdf";
                 
-                string folderpath = @"C:\Users\Sherwin\Documents\Uni - Work Experience\Watercare Bills\Watercare Invoices";
+                
+                string folderpath = @"C:\FPM_pdf_files";
                 // Be sure to update folderpath to match your directory!
                 string currentFilePath = "";
                 string fileName="";
