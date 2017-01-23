@@ -1,0 +1,9 @@
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe.config
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.pdb
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\itextsharp.dll
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\itextsharp.xml
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\MySql.Data.xml
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\FirstPropertyManagement_Project.csprojResolveAssemblyReference.cache
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.exe
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.pdb
