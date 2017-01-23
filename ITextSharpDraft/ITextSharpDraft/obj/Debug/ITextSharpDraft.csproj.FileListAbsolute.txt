@@ -1,0 +1,22 @@
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe.config
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.pdb
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\bin\Debug\itextsharp.dll
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\bin\Debug\itextsharp.xml
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.csprojResolveAssemblyReference.cache
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.exe
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.pdb
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\bin\Debug\MySql.Data.dll
+C:\Users\Sherwin\Documents\Uni - Work Experience\Programs\Draft C# Scanning\ITextSharpDraft\ITextSharpDraft\bin\Debug\MySql.Data.xml
+C:\Users\Sherwin\Source\Repos\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe.config
+C:\Users\Sherwin\Source\Repos\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.exe
+C:\Users\Sherwin\Source\Repos\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.pdb
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe.config
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.exe
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.pdb
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.exe
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\ITextSharpDraft.pdb
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\itextsharp.dll
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\itextsharp.xml
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\bin\Debug\MySql.Data.xml
+C:\Users\Jasneelc\Source\Repos\Commercial-Project\Commercial-Project\ITextSharpDraft\ITextSharpDraft\obj\Debug\ITextSharpDraft.csprojResolveAssemblyReference.cache
